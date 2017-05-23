@@ -1,0 +1,20 @@
+Source,Target,Weight
+Aemon,Grenn,5
+Aemon,Samwell,31
+Aerys,Jaime,18
+Aerys,Robert,6
+Aerys,Tyrion,5
+Aerys,Tywin,8
+Alliser,Mance,5
+Amory,Oberyn,5
+
+
+
+
+#include <vector>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <string.h>
+#include <stdio.h>
+std::ifstream inputFile;

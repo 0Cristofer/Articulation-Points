@@ -5,7 +5,7 @@
 #ifndef VERTICE_H
 #define VERTICE_H
 
-#include <vector>
+
 
 enum Cor{
   BRANCO, CINZA, PRETO
@@ -18,5 +18,7 @@ private:
   Cor cor = Cor::BRANCO;
   Vertice* predecessor;
 };
+
+
 
 #endif //VERTICE_H
