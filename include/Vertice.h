@@ -6,6 +6,7 @@
 #define VERTICE_H
 
 #include <vector>
+#include <string>
 
 enum Cor{
   BRANCO, CINZA, PRETO
@@ -13,26 +14,30 @@ enum Cor{
 
 class Vertice{
 public:
-  int getDescobrimento();
-  int getTermino();
-  int getDistancia();
-
-  std::vector<Vertice*> getVizinhos();
-  Cor getCor();
-  Vertice* getPrececessor();
+  Vertice(std::string& nome);
 
   void setDescobrimento(int descobrimento);
   void setTermino(int termino);
   void setDistancia(int distancia);
-  
+
+  void setString(std::string& nome);
   void addVizinho(Vertice* vertice);
-  void setCor(Cor cor);
-  void setPrececessor(Vertice* vertice);
+  void setPredecessor(Vertice* vertice);
+
+  int getDescobrimento();
+  int getTermino();
+  int getDistancia();
+
+  std::string& getNome();
+  std::vector<Vertice*>& getVizinhos();
+  Cor getCor();
+  Vertice* getPredecessor();
 private:
   int descobrimento_ = 0;
   int termino_ = 0;
   int distancia_ = 0;
 
+  std::string nome_;
   std::vector<Vertice*> vizinhos_;
   Cor cor_ = Cor::BRANCO;
   Vertice* predecessor_;

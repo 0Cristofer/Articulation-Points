@@ -2,7 +2,7 @@
   Autor: Cristofer Oswald
   Data: 23/05/2017 */
 
-  #include "include/vertice.h"
+  #include "include/Vertice.h"
 
   int main(){
     return 0;
