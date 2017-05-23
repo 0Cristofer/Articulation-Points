@@ -7,7 +7,7 @@
 
 #include <vector>
 
-enum cor{
+enum Cor{
   BRANCO, CINZA, PRETO
 };
 
@@ -15,6 +15,8 @@ class Vertice{
 public:
 private:
   std::vector<Vertice*> vizinhos;
+  Cor cor = Cor::BRANCO;
+  Vertice* predecessor;
 };
 
 #endif //VERTICE_H
