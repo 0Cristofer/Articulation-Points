@@ -6,6 +6,14 @@
 #define VERTICE_H
 
 #include <vector>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <string.h>
+#include <stdio.h>
+
+std::ifstream inputFile;
 
 enum Cor{
   BRANCO, CINZA, PRETO
@@ -24,7 +32,7 @@ public:
   void setDescobrimento(int descobrimento);
   void setTermino(int termino);
   void setDistancia(int distancia);
-  
+
   void addVizinho(Vertice* vertice);
   void setCor(Cor cor);
   void setPrececessor(Vertice* vertice);
