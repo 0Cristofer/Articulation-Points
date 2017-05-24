@@ -11,7 +11,7 @@
 
 
 int distancia(Vertice* u, Vertice* v, std::unordered_map<std::string, Vertice*>& grafo){
-              std::queue<Vertice*> fila;
+  std::queue<Vertice*> fila;
   Vertice *atual;
 
   u->setCor(Cor::CINZA);
