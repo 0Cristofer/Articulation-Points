@@ -17,11 +17,19 @@ void Vertice::setTermino(int termino){
 }
 
 void Vertice::setDistancia(int distancia){
-  distancia = distancia_;
+  distancia_ = distancia;
 }
 
 void Vertice::addVizinho(Vertice* vertice){
+  vizinhos_.push_back(vertice);
+}
 
+void Vertice::setCor(Cor cor){
+  cor_ = cor;
+}
+
+void Vertice::setPredecessor(Vertice* predecessor){
+  predecessor_ = predecessor;
 }
 
 int Vertice::getDescobrimento(){
@@ -50,4 +58,19 @@ Cor Vertice::getCor(){
 
 Vertice* Vertice::getPredecessor(){
   return predecessor_;
+}
+
+void Vertice::printVizinhos(){
+  std::cout << "Vizinhos de " << nome_ << ":" << std::endl;
+  for(auto& vizinho : vizinhos_){
+    std::cout << "\t" << vizinho->getNome() << std::endl;
+  }
+}
+
+void Vertice::limparDados(){
+  setDescobrimento(0);
+  setTermino(0);
+  setTermino(0);
+  setCor(Cor::BRANCO);
+  setPredecessor(NULL);
 }

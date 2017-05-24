@@ -8,9 +8,6 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include <fstream>
-#include <string.h>
-#include <stdio.h>
 
 enum Cor{
   BRANCO, CINZA, PRETO
@@ -25,6 +22,7 @@ public:
   void setDistancia(int distancia);
 
   void addVizinho(Vertice* vertice);
+  void setCor(Cor cor);
   void setPredecessor(Vertice* vertice);
 
   int getDescobrimento();
@@ -35,6 +33,9 @@ public:
   std::vector<Vertice*>& getVizinhos();
   Cor getCor();
   Vertice* getPredecessor();
+
+  void printVizinhos();
+  void limparDados();
 private:
   int descobrimento_ = 0;
   int termino_ = 0;
@@ -43,8 +44,7 @@ private:
   std::string nome_;
   std::vector<Vertice*> vizinhos_;
   Cor cor_ = Cor::BRANCO;
-  Vertice* predecessor_;
-
+  Vertice* predecessor_ = NULL;
 };
 
 #endif //VERTICE_H

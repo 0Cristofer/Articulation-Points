@@ -1,8 +1,56 @@
-/*Arquivo que implementa algoritmos no grafo de game of thrones
+/*Arquivo pincipal da leitura do grafo de Game of Thrones
   Autor: Cristofer Oswald
   Data: 23/05/2017 */
 
-#include "include/Vertice.h"
+#include "include/got.h"
+
+int main(int argc, char** argv){
+  if(!verificaArgs(argc)){
+    return 0;
+  }
+
+  std::string nome_arquivo(argv[1]);
+  std::string vertice1, vertice2;
+  Vertice* u;
+  Vertice* v;
+
+  std::cout << "Lendo grafo: " << nome_arquivo << std::endl ;
+  leGrafo(nome_arquivo);
+
+  //Excutando algoritmo de caminho mínimo
+  std::cout << std::endl <<
+    "Teste de execução do algoritmo de distância entre dois vertices:"
+    << std::endl;
+  std::cout << "Digite o nome do vertice 1: ";
+  std::cin >> vertice1;
+  std::cout << "Digite o nome do vertice 2: ";
+  std::cin >> vertice2;
+
+  if((grafo.find(vertice1) == grafo.end()) ||
+    (grafo.find(vertice2) == grafo.end())){
+    std::cout << "Nome de vertices errado, abortando" << std::endl;
+    return 0;
+  }
+
+  std::cout << "Distância entre os vértices " << vertice1 << " e vértice "
+    << vertice2 << " é : " << distancia(grafo[vertice1], grafo[vertice2], grafo)
+    << std::endl;
+
+  //Executando algoritmo de procura de pontos de articulação
+  std::cout << std::endl <<
+    "Teste de execução do algoritmo de procura de pontos de articulação:"
+    << std::endl;
+  pontosDeArticulacao(grafo);
+
+  //Executando algoritmo de procura de pontes
+  std::cout << std::endl <<
+    "Teste de execução do algoritmo de procura de pontes:"
+    << std::endl;
+  pontes(grafo);
+
+  std::cout << std::endl << "Fim" << std::endl;
+  return 0;
+}
 
 bool verificaArgs(int argc){
   if(argc != 2){
@@ -13,37 +61,37 @@ bool verificaArgs(int argc){
   return true;
 }
 
-void leGrafo(std::string& nomeFile){
-  std::ifstream inputFile;
-  std::string linha, nome1, nome2;
+//Lê um grafo dado o nome do arquivo
+void leGrafo(std::string& nome_file){
+  std::ifstream input_file;
+  std::string linha, origem, destino;
 
-  inputFile.open(nomeFile);
+  input_file.open(nome_file);
 
-  if(inputFile.is_open()){
-    getline(inputFile, linha, '\r'); //Ignora a primeira linha
+  if(input_file.is_open()){
+    getline(input_file, linha, '\r'); //Ignora a primeira linha
 
-    while(getline(inputFile, linha, '\r')){
-      nome1 = strtok(&linha[0], ",");
-      nome2 = strtok(NULL, ",");
-      std::cout << "Nome 1 : " << nome1 <<"  Nome 2: " << nome2 << std::endl;
-      //TODO Logica gerar lista de adjacencia
+    while(getline(input_file, linha, '\r')){
+      origem = strtok(&linha[0], ",");
+      destino = strtok(NULL, ",");
+
+      //Verifica se o vertice de origem está no hash de vertices
+      if(grafo.find(origem) == grafo.end()){
+        grafo[origem] = new Vertice(origem);
+      }
+
+      //Verifica se o vertice de destino está no hash de vertices
+      if(grafo.find(destino) == grafo.end()){
+        grafo[destino] = new Vertice(destino);
+      }
+
+      //Adiciona o destino como vizinho da origem
+      grafo[origem]->addVizinho(grafo[destino]);
+      //Adiciona a origem como vizinho da destino
+      grafo[destino]->addVizinho(grafo[origem]);
     }
   }
   else{
     std::cout<< "Arquivo inválido" << std::endl;
   }
-}
-
-int main(int argc, char** argv){
-  if(!verificaArgs(argc)){
-    return 0;
-  }
-
-  std::string nome_arquivo(argv[1]);
-
-  std::cout << "Lendo grafo: " << nome_arquivo << std::endl ;
-
-  leGrafo(nome_arquivo);
-  std::cout << std::endl << "Fim" << std::endl;
-  return 0;
 }
