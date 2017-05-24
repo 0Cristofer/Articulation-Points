@@ -10,6 +10,7 @@ int main(int argc, char** argv){
   }
 
   int tempo = 0;
+  int filhos = 0;
   std::string nome_arquivo(argv[1]);
   std::string vertice1, vertice2;
   Vertice* u;
@@ -43,7 +44,7 @@ int main(int argc, char** argv){
   std::cout << std::endl <<
     "Teste de execução do algoritmo de procura de pontos de articulação:"
     << std::endl;
-  pontosDeArticulacao(grafo.begin()->second, tempo, grafo);
+  pontosDeArticulacao(grafo.begin()->second, filhos, tempo, grafo);
 
   //Executando algoritmo de procura de pontes
   tempo = 0;

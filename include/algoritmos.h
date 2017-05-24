@@ -12,7 +12,7 @@
 
 int distancia(Vertice* u, Vertice* v,
               std::unordered_map<std::string, Vertice*>& grafo);
-void pontosDeArticulacao(Vertice *u, int& tempo,
+void pontosDeArticulacao(Vertice *u, int& tempo, int& filhos,
                         std::unordered_map<std::string, Vertice*>& grafo);
 void pontes(std::unordered_map<std::string, Vertice*>& grafo);
 void reiniciaVerices(std::unordered_map<std::string, Vertice*>& grafo);

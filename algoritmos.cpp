@@ -35,7 +35,7 @@ int distancia(Vertice* u, Vertice* v, std::unordered_map<std::string, Vertice*>&
   return v->getDistancia();
 }
 
-void pontosDeArticulacao(Vertice *u, int& tempo,
+void pontosDeArticulacao(Vertice *u, int& tempo, int& filhos,
                         std::unordered_map<std::string, Vertice*>& grafo){
   tempo = tempo + 1;
   u->setCor(Cor::CINZA);
@@ -44,10 +44,13 @@ void pontosDeArticulacao(Vertice *u, int& tempo,
 
   for(Vertice* v : u->getVizinhos()){
     if(v->getCor() == Cor::BRANCO){
-      v->setPredecessor(u);
-      pontosDeArticulacao(v, tempo, grafo);
       if(u->getPredecessor() == NULL){
-        if(!"segundo filho"){
+        filhos = filhos + 1;
+      }
+      v->setPredecessor(u);
+      pontosDeArticulacao(v, filhos, tempo, grafo);
+      if(u->getPredecessor() == NULL){
+        if(filhos > 1){
           std::cout << u->getNome() << " é ponto de articulação" << std::endl;
         }
       }
