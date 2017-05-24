@@ -7,6 +7,7 @@
 
 #include <queue>
 #include <iostream>
+#include <algorithm>
 
 
 int distancia(Vertice* u, Vertice* v, std::unordered_map<std::string, Vertice*>& grafo){
@@ -34,7 +35,7 @@ int distancia(Vertice* u, Vertice* v, std::unordered_map<std::string, Vertice*>&
   return v->getDistancia();
 }
 
-void pontosDeArticulacao(Vertice *u, int tempo,
+void pontosDeArticulacao(Vertice *u, int& tempo,
                         std::unordered_map<std::string, Vertice*>& grafo){
   tempo = tempo + 1;
   u->setCor(Cor::CINZA);
@@ -43,10 +44,31 @@ void pontosDeArticulacao(Vertice *u, int tempo,
 
   for(Vertice* v : u->getVizinhos()){
     if(v->getCor() == Cor::BRANCO){
-      v->
+      v->setPredecessor(u);
+      pontosDeArticulacao(v, tempo, grafo);
+      if(u->getPredecessor() == NULL){
+        if(!"segundo filho"){
+          std::cout << u->getNome() << " é ponto de articulação" << std::endl;
+        }
+      }
+      else{
+        u->setLow(std::min(u->getLow(), v->getLow()));
+        if(v->getLow() >= u->getDescobrimento()){
+          std::cout << u->getNome() << " é ponto de articulação" << std::endl;
+        }
+      }
+    }
+    else{
+      if((v != u->getPredecessor()) &&
+        (v->getDescobrimento() < u->getDescobrimento())){
+          u->setLow(std::min(u->getLow(), v->getDescobrimento()));
+        }
     }
   }
 
+  u->setCor(Cor::PRETO);
+  tempo = tempo + 1;
+  u->setTermino(tempo);
 }
 
 void pontes(std::unordered_map<std::string, Vertice*>& grafo){
