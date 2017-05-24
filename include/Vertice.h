@@ -7,6 +7,10 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <string.h>
+#include <stdio.h>
 
 enum Cor{
   BRANCO, CINZA, PRETO
@@ -20,7 +24,6 @@ public:
   void setTermino(int termino);
   void setDistancia(int distancia);
 
-  void setString(std::string& nome);
   void addVizinho(Vertice* vertice);
   void setPredecessor(Vertice* vertice);
 
