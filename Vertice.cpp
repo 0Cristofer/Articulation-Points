@@ -20,6 +20,10 @@ void Vertice::setDistancia(int distancia){
   distancia_ = distancia;
 }
 
+void Vertice::setLow(int low){
+  low_ = low;
+}
+
 void Vertice::addVizinho(Vertice* vertice){
   vizinhos_.push_back(vertice);
 }
@@ -42,6 +46,10 @@ int Vertice::getTermino(){
 
 int Vertice::getDistancia(){
   return distancia_;
+}
+
+int Vertice::getLow(){
+  return low_;
 }
 
 std::string& Vertice::getNome(){
@@ -71,6 +79,7 @@ void Vertice::limparDados(){
   setDescobrimento(0);
   setTermino(0);
   setTermino(0);
+  setLow(0);
   setCor(Cor::BRANCO);
   setPredecessor(NULL);
 }

@@ -10,11 +10,13 @@
 #include <string>
 #include <unordered_map>
 
-int distancia(Vertice* u, Vertice* v, std::unordered_map<std::string, Vertice*>& grafo);
-void pontosDeArticulacao(std::unordered_map<std::string, Vertice*>& grafo);
+int distancia(Vertice* u, Vertice* v,
+              std::unordered_map<std::string, Vertice*>& grafo);
+void pontosDeArticulacao(Vertice *u, int tempo,
+                        std::unordered_map<std::string, Vertice*>& grafo);
 void pontes(std::unordered_map<std::string, Vertice*>& grafo);
 void reiniciaVerices(std::unordered_map<std::string, Vertice*>& grafo);
 int verificaDistancia(Vertice* u, Vertice* v,
-  std::unordered_map<std::string, Vertice*>& grafo);
+                      std::unordered_map<std::string, Vertice*>& grafo);
 
 #endif //ALGORITMOS_H

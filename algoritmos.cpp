@@ -10,10 +10,9 @@
 
 
 int distancia(Vertice* u, Vertice* v, std::unordered_map<std::string, Vertice*>& grafo){
-  std::queue<Vertice*> fila;
+              std::queue<Vertice*> fila;
   Vertice *atual;
 
-  reiniciaVerices(grafo);
   u->setCor(Cor::CINZA);
   //As outras inicializações já acontecem em reinicia;
 
@@ -35,13 +34,23 @@ int distancia(Vertice* u, Vertice* v, std::unordered_map<std::string, Vertice*>&
   return v->getDistancia();
 }
 
-void pontosDeArticulacao(std::unordered_map<std::string, Vertice*>& grafo){
-  reiniciaVerices(grafo);
+void pontosDeArticulacao(Vertice *u, int tempo,
+                        std::unordered_map<std::string, Vertice*>& grafo){
+  tempo = tempo + 1;
+  u->setCor(Cor::CINZA);
+  u->setLow(tempo);
+  u->setDescobrimento(tempo);
+
+  for(Vertice* v : u->getVizinhos()){
+    if(v->getCor() == Cor::BRANCO){
+      v->
+    }
+  }
 
 }
 
 void pontes(std::unordered_map<std::string, Vertice*>& grafo){
-  reiniciaVerices(grafo);
+  int tempo = 0;
 
 }
 

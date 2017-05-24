@@ -18,6 +18,7 @@ int main(int argc, char** argv){
   leGrafo(nome_arquivo);
 
   //Excutando algoritmo de caminho mínimo
+  reiniciaVerices(grafo);
   std::cout << std::endl <<
     "Teste de execução do algoritmo de distância entre dois vertices:"
     << std::endl;
@@ -37,12 +38,14 @@ int main(int argc, char** argv){
     << std::endl;
 
   //Executando algoritmo de procura de pontos de articulação
+  reiniciaVerices(grafo);
   std::cout << std::endl <<
     "Teste de execução do algoritmo de procura de pontos de articulação:"
     << std::endl;
-  pontosDeArticulacao(grafo);
+  pontosDeArticulacao(grafo.begin()->second, 0, grafo);
 
   //Executando algoritmo de procura de pontes
+  reiniciaVerices(grafo);
   std::cout << std::endl <<
     "Teste de execução do algoritmo de procura de pontes:"
     << std::endl;
