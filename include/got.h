@@ -1,5 +1,5 @@
 /*Header contendo a declaração das funções e variáveis globais do arquivo got.cpp
-  Autor: Cristofer Oswald
+  Autor: Cristofer Oswald e Bruno Cesar
   Data: 23/05/2017*/
 
 #ifndef GOT_H

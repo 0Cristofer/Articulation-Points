@@ -1,5 +1,5 @@
 /*Arquivo que contém a implementação de algoritmos em grafos
-  Autor: Cristofer Oswald
+  Autor: Cristofer Oswald e Bruno Cesar
   Data: 23/05/2017 */
 
 #include "include/algoritmos.h"
@@ -43,7 +43,7 @@ void pontosDeArticulacao(Vertice *u, int tempo,
 
   for(Vertice* v : u->getVizinhos()){
     if(v->getCor() == Cor::BRANCO){
-      v->
+//      v->
     }
   }
 

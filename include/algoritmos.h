@@ -1,5 +1,5 @@
 /*Header que contém os cabeçalhos necessários para algoritmos.cpp
-  Autor: Cristofer Oswald
+  Autor: Cristofer Oswald e Bruno Cesar
   Data: 23/05/2017 */
 
 #ifndef ALGORITMOS_H

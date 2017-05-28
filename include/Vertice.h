@@ -1,5 +1,5 @@
 /*Definição de um vértice
-  Autor: Cristofer Oswald
+  Autor: Cristofer Oswald e Bruno Cesar
   Data: 23/05/2017 */
 
 #ifndef VERTICE_H

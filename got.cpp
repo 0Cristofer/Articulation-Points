@@ -1,5 +1,5 @@
 /*Arquivo pincipal da leitura do grafo de Game of Thrones
-  Autor: Cristofer Oswald
+  Autor: Cristofer Oswald e Bruno Cesar
   Data: 23/05/2017 */
 
 #include "include/got.h"
