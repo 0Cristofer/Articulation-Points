@@ -3,6 +3,7 @@
   Data: 23/05/2017 */
 
 #include "include/Vertice.h"
+#include <climits>
 
 Vertice::Vertice(std::string& nome){
   nome_ = nome;
@@ -76,10 +77,9 @@ void Vertice::printVizinhos(){
 }
 
 void Vertice::limparDados(){
-  setDescobrimento(0);
-  setTermino(0);
-  setTermino(0);
-  setLow(0);
+  setDescobrimento(INT_MAX);
+  setTermino(INT_MAX);
+  setLow(INT_MAX);
   setCor(Cor::BRANCO);
   setPredecessor(NULL);
 }

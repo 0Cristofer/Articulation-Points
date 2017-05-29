@@ -5,6 +5,8 @@
 #ifndef GOT_H
 #define GOT_H
 
+#define FIM_DE_LINHA '\r'
+
 #include "Vertice.h"
 #include "algoritmos.h"
 

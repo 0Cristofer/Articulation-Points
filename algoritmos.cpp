@@ -47,7 +47,7 @@ void pontosDeArticulacao(Vertice *u, int& tempo, int& filhos,
         filhos = filhos + 1;
       }
       v->setPredecessor(u);
-      pontosDeArticulacao(v, filhos, tempo, grafo);
+      pontosDeArticulacao(v, tempo, filhos, grafo);
       if(u->getPredecessor() == NULL){
         if(filhos > 1){
           std::cout << u->getNome() << " é ponto de articulação" << std::endl;
@@ -81,18 +81,19 @@ void pontes(Vertice *u, int& tempo,
   u->setLow(u->getDescobrimento());
 
   for(Vertice* v : u->getVizinhos()){
-      if(v->getCor() == Cor::BRANCO){
-          v->setPredecessor(u);
-          pontes(v,tempo,grafo);
-          u->setLow(std::min(u->getLow(), v->getLow()));
-          if (v->getLow() > u->getDescobrimento()){
-              std::cout << u->getNome() << " é uma ponte" << std::endl;
-          } else{
-              if((v != u->getPredecessor()) && (v->getDescobrimento() < u->getDescobrimento())){
-                  u->setLow(std::min(u->getLow(),v->getDescobrimento()));
-              }
-          }
+    if(v->getCor() == Cor::BRANCO){
+      v->setPredecessor(u);
+      pontes(v,tempo,grafo);
+      u->setLow(std::min(u->getLow(), v->getLow()));
+      if (v->getLow() > u->getDescobrimento()){
+        std::cout << u->getNome() << " é uma ponte para " << v->getNome() << std::endl;
       }
+    }
+    else{
+      if((v != u->getPredecessor()) && (v->getDescobrimento() < u->getDescobrimento())){
+        u->setLow(std::min(u->getLow(),v->getDescobrimento()));
+      }
+    }
   }
 
   u->setCor(Cor::PRETO);

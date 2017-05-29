@@ -19,6 +19,11 @@ int main(int argc, char** argv){
   std::cout << "Lendo grafo: " << nome_arquivo << std::endl ;
   leGrafo(nome_arquivo);
 
+  //Printa o grafo
+  /*for(std::pair<std::string, Vertice*> v : grafo){
+    std::cout << v.second->getNome() << std::endl;
+  }*/
+
   //Excutando algoritmo de caminho mínimo
   reiniciaVerices(grafo);
   std::cout << std::endl <<
@@ -75,9 +80,9 @@ void leGrafo(std::string& nome_file){
   input_file.open(nome_file);
 
   if(input_file.is_open()){
-    getline(input_file, linha, '\r'); //Ignora a primeira linha
+    getline(input_file, linha, FIM_DE_LINHA); //Ignora a primeira linha
 
-    while(getline(input_file, linha, '\r')){
+    while(getline(input_file, linha, FIM_DE_LINHA)){
       origem = strtok(&linha[0], ",");
       destino = strtok(NULL, ",");
 
