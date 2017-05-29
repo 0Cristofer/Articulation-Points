@@ -52,7 +52,7 @@ int main(int argc, char** argv){
   std::cout << std::endl <<
     "Teste de execução do algoritmo de procura de pontes:"
     << std::endl;
-  pontes(grafo);
+  pontes(grafo.begin()->second, tempo, grafo);
 
   std::cout << std::endl << "Fim" << std::endl;
   return 0;

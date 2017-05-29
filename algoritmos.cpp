@@ -73,9 +73,31 @@ void pontosDeArticulacao(Vertice *u, int& tempo, int& filhos,
   u->setTermino(tempo);
 }
 
-void pontes(std::unordered_map<std::string, Vertice*>& grafo){
-  int tempo = 0;
+void pontes(Vertice *u, int& tempo,
+            std::unordered_map<std::string, Vertice*>& grafo){
+  tempo++;
+  u->setCor(Cor::CINZA);
+  u->setDescobrimento(tempo);
+  u->setLow(u->getDescobrimento());
 
+  for(Vertice* v : u->getVizinhos()){
+      if(v->getCor() == Cor::BRANCO){
+          v->setPredecessor(u);
+          pontes(v,tempo,grafo);
+          u->setLow(std::min(u->getLow(), v->getLow()));
+          if (v->getLow() > u->getDescobrimento()){
+              std::cout << u->getNome() << " é uma ponte" << std::endl;
+          } else{
+              if((v != u->getPredecessor()) && (v->getDescobrimento() < u->getDescobrimento())){
+                  u->setLow(std::min(u->getLow(),v->getDescobrimento()));
+              }
+          }
+      }
+  }
+
+  u->setCor(Cor::PRETO);
+  tempo++;
+  u->setTermino(tempo);
 }
 
 void reiniciaVerices(std::unordered_map<std::string, Vertice*>& grafo){
