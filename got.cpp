@@ -6,9 +6,8 @@
 #include "include/got.h"
 
 int main(int argc, char** argv){
-  if(!verificaArgs(argc)){
+  if(!verificaArgs(argc))
     return 0;
-  }
 
   int tempo = 0;
   int filhos = 0;
